@@ -1,6 +1,12 @@
-name: 'sds'
+name: Auto close and lock others issues
+
 on: push
-jobs: 
-  steps:
-    - name: odevv
-      run: node -v
+env:
+  ONWER: "tTdly-Old"
+
+jobs:
+  autoclose:
+    runs-on: ubuntu-latest
+    steps:
+      - name: nodev
+        run: node -v    
