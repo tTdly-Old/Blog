@@ -1,6 +1,6 @@
 name: 'sds'
 on: push
 jobs: 
-  step:
-    - name: 'nodevv'
+  steps:
+    - name: odevv
       run: node -v
