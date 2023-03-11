@@ -11,8 +11,6 @@ jobs:
     steps:
       - name: checkout
         uses: actions/checkout@v3.3.0
-      - name: Setup pnpm
-        env: 
-          TEST: ${{toJSON(github)}}
-        run: echo "$TEST";
+      - name: check issue
+        run: echo "${{github.actor}}" && echo "${{ github.event.issue.number }}";
 
