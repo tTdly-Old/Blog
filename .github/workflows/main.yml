@@ -13,4 +13,6 @@ jobs:
         uses: actions/checkout@v3.3.0
       - name: check issue
         run: echo "${{github.actor}}" && echo "${{ github.event.issue.number }}";
+      - name: check node
+        run: node -v
 
