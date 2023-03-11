@@ -1,9 +1,11 @@
 name: auto close bad issue
 
+# on:
+#   issues:
+#     types:
+#       - "opened"
 on:
-  issues:
-    types:
-      - "opened"
+  push
 env: 
   OWNER: "tTdly-Old"
   FAKE: "ttdly"
@@ -37,11 +39,11 @@ jobs:
       # - name: Install dependencies
       #   run: pnpm install
 
-      - if: ${{ github.actor != $OWNER }}
+      - if: ${{ github.actor != env.OWNER }}
         name: isisi
         run: echo "No"
-      - if: ${{ github.actor != $FAKE }}
-        name: isisi
+      - if: ${{ github.actor != env.FAKE }}
+        name: isisnonoi
         run: echo "YES"
         # run: node ./issue.js ""${{github.actor}}" "${{ github.event.issue.number }}" "${{ secrets.TOKEN }}"
 
