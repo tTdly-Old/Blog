@@ -14,5 +14,5 @@ jobs:
       - name: Setup pnpm
         env: 
           TEST:${{toJSON(github.actor)}}
-        run: echo $TEST
+        run: echo "$TEST";
 
