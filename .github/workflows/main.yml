@@ -1,2 +1,22 @@
-- name: Auto Issue List in README
-  uses: seed-of-apricot/issue-list-readme@v1.1.0
+name: auto close bad issue
+
+on:
+  issues:
+    types:
+      - "opened"
+
+jobs:
+  autoclose:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout
+        uses: actions/checkout@v3.3.
+        with:
+          ref: refs/heads/issue
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v2.2.4
+        with:
+          run_install: true
+      - name: test
+        run: pnpm -v
+
