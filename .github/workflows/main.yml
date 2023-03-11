@@ -13,7 +13,7 @@ jobs:
     - uses: actions/setup-node@v3
       with:
         node-version: 16
-        cache: 'npm'
-    - run: npm install
-    - run: npm test
+        cache: 'pnpm'
+    - run: pnpm install
+    - run: pnpm test
 
