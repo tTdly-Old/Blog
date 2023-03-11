@@ -1,16 +1,14 @@
 name: auto close bad issue
 
 on:
-  issues:
-    types:
-      - "opened"
+  push
 
 jobs:
   autoclose:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-
+      - uses: pnpm/action-setup@v2.2.4
       - name: Cache node modules
         id: cache-pnpm
         uses: actions/cache@v3
