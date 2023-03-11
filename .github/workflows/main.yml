@@ -5,7 +5,7 @@ on:
     types:
       - "opened"
 env: 
-  OWNER: "tTdly-Old",
+  OWNER: "tTdly-Old"
   FAKE: "ttdly"
 jobs:
   autoclose:
