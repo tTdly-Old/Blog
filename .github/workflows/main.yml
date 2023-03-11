@@ -1,49 +1,28 @@
-name: auto close bad issue
+name: Auto close and lock others issues
 
-# on:
-#   issues:
-#     types:
-#       - "opened"
 on:
-  push
-env: 
-  OWNER: "tTdly-Old"
-  FAKE: "ttdly"
+  issues:
+    types:
+      - "opened"
+env:
+  ONWER: "tTdly-Old"
+
 jobs:
   autoclose:
     runs-on: ubuntu-latest
     steps:
-      # - uses: actions/checkout@v3
-      # - uses: pnpm/action-setup@v2.2.4
-      #   with:
-      #     version: 7.27.0
-      # - name: Cache node modules
-      #   id: cache-pnpm
-      #   uses: actions/cache@v3
-      #   env:
-      #     cache-name: cache-node-modules
-      #   with:
-      #     # npm cache files are stored in `~/.npm` on Linux/macOS
-      #     path: ~/.pnpm
-      #     key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/pnpm-lock.yaml') }}
-      #     restore-keys: |
-      #       ${{ runner.os }}-build-${{ env.cache-name }}-
-      #       ${{ runner.os }}-build-
-      #       ${{ runner.os }}-
-
-      # - if: ${{ steps.cache-npm.outputs.cache-hit != 'true' }}
-      #   name: List the state of node modules
-      #   continue-on-error: true
-      #   run: pnpm list
-
-      # - name: Install dependencies
-      #   run: pnpm install
-
-      - if: ${{ github.actor != env.OWNER }}
-        name: isisi
-        run: echo "No"
-      - if: ${{ github.actor != env.FAKE }}
-        name: isisnonoi
-        run: echo "YES"
-        # run: node ./issue.js ""${{github.actor}}" "${{ github.event.issue.number }}" "${{ secrets.TOKEN }}"
-
+      - if: ${{ github.actor != env.ONWER}}
+        name: CloseIssue&Lock
+        uses: actions-cool/issues-helper@v2.2.1
+        with:
+          actinons: "close-issue"
+          token: ${{ secrets.TOKEN }}
+          issue-number: ${{ github.event.issue.number }}
+          body: "Not accepting other people's issues. So the issue was automatically closed and locked. Thanks and good luck."
+      - if: ${{ github.actor != env.ONWER}}
+        name: CloseIssue&Lock
+        uses: actions-cool/issues-helper@v2.2.1
+        with:
+          actinons: "lock-issue"
+          token: ${{ secrets.TOKEN }}
+          issue-number: ${{ github.event.issue.number }}        
