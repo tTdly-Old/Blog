@@ -10,9 +10,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: checkout
-        uses: actions/checkout@v3.3.0
-      - name: check issue
-        run: echo "${{github.actor}}" && echo "${{ github.event.issue.number }}";
-      - name: check node
-        run: node -v
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16
+          cache: 'npm'
+      - run: npm install
+      - run: npm -v
 
