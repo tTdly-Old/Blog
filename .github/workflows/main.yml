@@ -1,28 +1,14 @@
 name: Auto close and lock others issues
 
 on:
-  issues:
-    types:
-      - "opened"
+  issues
 env:
   ONWER: "tTdly-Old"
 
 jobs:
-  autoclose:
+  logInfo:
     runs-on: ubuntu-latest
     steps:
-      - if: ${{ github.actor != env.ONWER}}
-        name: CloseIssue
-        uses: actions-cool/issues-helper@v2.2.1
-        with:
-          actions: 'close-issue'
-          token: ${{ secrets.TOKEN }}
-          issue-number: ${{ github.event.issue.number }}
-          body: Not accepting other people's issues. So the issue was automatically closed and locked. Thanks and good luck.'
-      - if: ${{ github.actor != env.ONWER}}
-        name: LockIssue
-        uses: actions-cool/issues-helper@v2.2.1
-        with:
-          actions: 'lock-issue'
-          token: ${{ secrets.TOKEN }}
-          issue-number: ${{ github.event.issue.number }}        
+      - env:
+          INFO: ${{ github }}
+        run: echo "$INFO"
