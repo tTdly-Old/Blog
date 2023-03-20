@@ -19,7 +19,7 @@ if [ "$length" -eq "0" ];then
 Label=""
 fi
 
-HEADYML="---\ntitle: $Tilte\ndate: $Time\n$Label---\n"
+HEADYML="---\ntitle: $Tilte\ndate: $Time\n$Lable---\n"
 # 处理Body
 Body=$(echo ${Body:1:-1})
 if [ ! -d "posts" ];then

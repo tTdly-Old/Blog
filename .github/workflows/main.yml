@@ -12,6 +12,7 @@ env:
 
 jobs:
   logInfo:
+    if: ${{ github.event.action == 'opened' || github.event.action == 'edited' }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3.3.0
@@ -20,3 +21,4 @@ jobs:
           fetch-depth: 0
       - run: bash ./.github/scripts/write.sh "$INFO"
       - run: cat index.md
+  
