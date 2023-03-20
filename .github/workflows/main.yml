@@ -18,5 +18,5 @@ jobs:
         with:
           ref: main
           fetch-depth: 0
-      - run: bash ./.github/scripts/write.sh $INFO
+      - run: bash ./.github/scripts/write.sh "$INFO"
       - run: cat index.md
