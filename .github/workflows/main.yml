@@ -2,13 +2,25 @@ name: Auto close and lock others issues
 
 on:
   issues
+
 env:
-  ONWER: "tTdly-Old"
+  REPO: ${{ toJSON(github.repository) }}
+  NUMBER: ${{ toJSON(github.event.issue.number) }}
+  BODY: ${{ toJSON(github.event.issue.body) }}
+  TITLE: ${{ toJSON(github.event.issue.title) }}
+  LABLES: ${{ toJSON(github.event.issue.lables) }}
+  TIME: ${{ toJSON(github.event.issue.created_at) }}
 
 jobs:
   logInfo:
     runs-on: ubuntu-latest
     steps:
-      - env:
-          INFO: ${{ toJSON(github) }}
-        run: echo "$INFO"
+      - run: |
+          echo $BODY
+          echo $LABLES
+      - uses: actions/checkout@v3.3.0
+        with:
+          ref: main
+          fetch-depth: 0
+      - run: bash .github/scripts/write.sh $TITLE $BODY $LABLES $NUMBER $TIME
+      - run: cat index.md
