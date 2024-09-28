@@ -1,0 +1,10 @@
+name: Repository Dispatch Workflow
+on:
+  repository_dispatch:
+    types: [manual-trigger]
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    steps:
+    - run: echo ${{ github.event_path }} && cat ${{ github.event_path }}
