@@ -1,9 +1,11 @@
 name: Repository Dispatch Workflow
 on:
-  push
+  [push, discussion]
 
 jobs:
   run:
     runs-on: ubuntu-latest
     steps:
     - run: echo ${{ github.event_path }} && cat ${{ github.event_path }}
+    - run: echo "---------===---------"
+    - run: echo ${{ github }}
