@@ -45,10 +45,8 @@ def create_front_matter(data):
 def write_markdown(i_meta, i_body):
     base_path = os.path.join(os.getcwd())
     content_path = os.path.join(base_path, "content")
-    if not os.path.exists(content_path):
-        print(f"Content directory {content_path} doesn't exist")
-        exit(1)
     target_path = os.path.join(content_path, i_meta["category"])
+    os.makedirs(target_path, exist_ok=True)
     file_path = os.path.join(target_path, f"{i_meta['number']}.md")
     with open(file_path, "w") as f:
         f.write(i_body)
