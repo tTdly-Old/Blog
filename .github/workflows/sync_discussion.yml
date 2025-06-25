@@ -44,8 +44,8 @@ jobs:
             echo "没有检测到代码变更，跳过提交"
             echo "has_changes=false" >> $GITHUB_OUTPUT
           else
-            git config user.name "GitHub Action Bot"
-            git config user.email "action@github.com"
+            git config user.name "秃头灯笼鱼"
+            git config user.email "ttdlyu@163.com"
             git commit -m "Auto commit: $(date +'%Y-%m-%d %H:%M:%S')" -a
             echo "has_changes=true" >> $GITHUB_OUTPUT
           fi
